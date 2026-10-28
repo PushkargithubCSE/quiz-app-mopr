@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
+import { ThemeProvider } from "@/lib/theme-context";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
-  title: "QuizMaster — Test Your Knowledge",
-  description: "An elegant 10-question quiz with real-time scoring and analytics dashboard",
+  title: "QuizMaster — Panchayati Raj & Women Leadership",
+  description: "An elegant quiz on Panchayati Raj and Women Leadership",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

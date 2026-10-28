@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -27,7 +27,7 @@ export default function QuizPage() {
   const progress = (currentQ / questions.length) * 100;
   const optionLabels = ["A", "B", "C", "D"];
 
-  // User can freely change answer — no reveal
+  // User can freely change answer â€” no reveal
   const handleSelect = (idx: number) => {
     setSelectedAnswer(idx);
   };
@@ -117,7 +117,7 @@ export default function QuizPage() {
   const isLastQuestion = currentQ === questions.length - 1;
 
   return (
-    <main className="min-h-screen bg-ink flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <main className="min-h-screen bg-theme flex flex-col items-center justify-center p-6 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-gold/4 rounded-full blur-3xl" />
@@ -131,16 +131,16 @@ export default function QuizPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => router.push("/")}
-              className="text-parchment/30 hover:text-parchment/60 transition-colors"
+              className="text-muted hover:text-primary/60 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
-            <span className="text-parchment/40 text-sm font-body">{participantInfo.name}</span>
+            <span className="text-muted text-sm font-body">{participantInfo.name}</span>
           </div>
           <div className="font-mono text-gold text-sm font-medium">
-            {currentQ + 1} <span className="text-parchment/30">/ {questions.length}</span>
+            {currentQ + 1} <span className="text-muted">/ {questions.length}</span>
           </div>
         </div>
 
@@ -166,7 +166,7 @@ export default function QuizPage() {
 
         {/* Category badge */}
         <div className="flex items-center gap-3 mb-5">
-          <span className="px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-mono tracking-wide uppercase">
+          <span className="px-3 py-1 rounded-full bg-gold/10 border border-theme text-gold text-xs font-mono tracking-wide uppercase">
             {question.category}
           </span>
           <div className="flex-1 h-px bg-parchment/8" />
@@ -174,12 +174,12 @@ export default function QuizPage() {
 
         {/* Question */}
         <div className="mb-8">
-          <h1 className="font-display text-2xl md:text-3xl font-bold text-parchment leading-tight">
+          <h1 className="font-display text-2xl md:text-3xl font-bold text-primary leading-tight">
             {question.question}
           </h1>
         </div>
 
-        {/* Options — no reveal, freely selectable */}
+        {/* Options â€” no reveal, freely selectable */}
         <div className="space-y-3 mb-8">
           {question.options.map((option, idx) => {
             const isSelected = selectedAnswer === idx;
@@ -190,13 +190,13 @@ export default function QuizPage() {
                 onClick={() => handleSelect(idx)}
                 className={`option-card w-full flex items-center gap-4 px-5 py-4 rounded-xl border transition-all duration-200 ${
                   isSelected
-                    ? "border-gold/60 bg-gold/10 text-parchment"
-                    : "border-parchment/10 bg-parchment/3 text-parchment hover:border-gold/30 hover:bg-gold/5 cursor-pointer"
+                    ? "border-gold/60 bg-gold/10 text-primary"
+                    : "border-subtle bg-parchment/3 text-primary hover:border-theme hover:bg-gold/5 cursor-pointer"
                 }`}
               >
                 {/* Label */}
                 <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 transition-colors ${
-                  isSelected ? "bg-gold/20 text-gold" : "bg-parchment/5 text-parchment/40"
+                  isSelected ? "bg-gold/20 text-gold" : "bg-parchment/5 text-muted"
                 }`}>
                   {optionLabels[idx]}
                 </span>
@@ -225,8 +225,8 @@ export default function QuizPage() {
             disabled={currentQ === 0}
             className={`flex items-center gap-2 px-5 py-3 rounded-xl font-body font-medium text-sm transition-all duration-200 ${
               currentQ === 0
-                ? "text-parchment/15 cursor-not-allowed"
-                : "border border-parchment/15 text-parchment/50 hover:border-gold/30 hover:text-parchment/80"
+                ? "text-primary/15 cursor-not-allowed"
+                : "border border-theme text-secondary hover:border-theme hover:text-faint0"
             }`}
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -235,7 +235,7 @@ export default function QuizPage() {
             Back
           </button>
 
-          <p className="text-parchment/20 text-xs font-body">
+          <p className="text-faint text-xs font-body">
             {selectedAnswer === null ? "Select an answer" : "You can change your answer"}
           </p>
 
@@ -246,13 +246,13 @@ export default function QuizPage() {
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-body font-semibold text-sm transition-all duration-300 ${
               selectedAnswer !== null && !isSaving
                 ? "bg-gold text-ink hover:bg-gold-light scale-100"
-                : "bg-parchment/5 text-parchment/20 cursor-not-allowed scale-95"
+                : "bg-parchment/5 text-faint cursor-not-allowed scale-95"
             }`}
           >
             {isSaving ? (
               <>
                 Saving...
-                <span className="w-4 h-4 border-2 border-parchment/20 border-t-parchment/60 rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-theme border-t-parchment/60 rounded-full animate-spin" />
               </>
             ) : (
               <>
@@ -266,10 +266,11 @@ export default function QuizPage() {
         </div>
 
         {/* Keyboard hint */}
-        <p className="text-center text-parchment/15 text-xs font-mono mt-6">
-          Press 1–4 to select · Enter to continue
+        <p className="text-center text-primary/15 text-xs font-mono mt-6">
+          Press 1â€“4 to select Â· Enter to continue
         </p>
       </div>
     </main>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -53,17 +53,17 @@ export default function DashboardPage() {
   const passCount = participants.filter((p) => p.score / p.totalQuestions >= 0.5).length;
 
   const scoreDistribution = [
-    { range: "0–2", count: participants.filter((p) => p.score <= 2).length },
-    { range: "3–4", count: participants.filter((p) => p.score >= 3 && p.score <= 4).length },
-    { range: "5–6", count: participants.filter((p) => p.score >= 5 && p.score <= 6).length },
-    { range: "7–8", count: participants.filter((p) => p.score >= 7 && p.score <= 8).length },
-    { range: "9–10", count: participants.filter((p) => p.score >= 9).length },
+    { range: "0â€“2", count: participants.filter((p) => p.score <= 2).length },
+    { range: "3â€“4", count: participants.filter((p) => p.score >= 3 && p.score <= 4).length },
+    { range: "5â€“6", count: participants.filter((p) => p.score >= 5 && p.score <= 6).length },
+    { range: "7â€“8", count: participants.filter((p) => p.score >= 7 && p.score <= 8).length },
+    { range: "9â€“10", count: participants.filter((p) => p.score >= 9).length },
   ];
 
   const gradeData = [
     { name: "Excellent (90%+)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.9).length, color: "#D4A853" },
-    { name: "Great (70–89%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.7 && p.score / p.totalQuestions < 0.9).length, color: "#4A7C59" },
-    { name: "Pass (50–69%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.5 && p.score / p.totalQuestions < 0.7).length, color: "#7A8B6F" },
+    { name: "Great (70â€“89%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.7 && p.score / p.totalQuestions < 0.9).length, color: "#4A7C59" },
+    { name: "Pass (50â€“69%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.5 && p.score / p.totalQuestions < 0.7).length, color: "#7A8B6F" },
     { name: "Fail (<50%)", value: participants.filter((p) => p.score / p.totalQuestions < 0.5).length, color: "#C23B22" },
   ].filter((d) => d.value > 0);
 
@@ -96,17 +96,17 @@ export default function DashboardPage() {
   };
 
   const rankMedal = (i: number) => {
-    if (i === 0) return "🥇";
-    if (i === 1) return "🥈";
-    if (i === 2) return "🥉";
+    if (i === 0) return "ðŸ¥‡";
+    if (i === 1) return "ðŸ¥ˆ";
+    if (i === 2) return "ðŸ¥‰";
     return null;
   };
 
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload?.length) {
       return (
-        <div className="bg-slate border border-gold/20 rounded-lg px-3 py-2">
-          <p className="text-parchment/60 text-xs font-body">{label}</p>
+        <div className="bg-surface border border-theme rounded-lg px-3 py-2">
+          <p className="text-primary/60 text-xs font-body">{label}</p>
           <p className="text-gold text-sm font-mono font-bold">{payload[0].value}</p>
         </div>
       );
@@ -116,10 +116,10 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-ink flex items-center justify-center">
+      <main className="min-h-screen bg-theme flex items-center justify-center">
         <div className="text-center">
-          <div className="w-10 h-10 border-2 border-gold/20 border-t-gold rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-parchment/40 font-body text-sm">Loading dashboard...</p>
+          <div className="w-10 h-10 border-2 border-theme border-t-gold rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-muted font-body text-sm">Loading dashboard...</p>
         </div>
       </main>
     );
@@ -127,10 +127,10 @@ export default function DashboardPage() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-ink flex items-center justify-center p-6">
+      <main className="min-h-screen bg-theme flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="font-display text-5xl mb-4">⚠️</div>
-          <p className="text-parchment/60 font-body mb-6">{error}</p>
+          <div className="font-display text-5xl mb-4">âš ï¸</div>
+          <p className="text-primary/60 font-body mb-6">{error}</p>
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-3 bg-gold text-ink rounded-xl font-body font-semibold text-sm hover:bg-gold-light transition-all"
@@ -143,7 +143,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen bg-ink p-6 relative">
+    <main className="min-h-screen bg-theme p-6 relative">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-gold/4 rounded-full blur-3xl" />
       </div>
@@ -154,16 +154,16 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => router.push("/")}
-              className="text-parchment/30 hover:text-parchment/60 transition-colors"
+              className="text-muted hover:text-primary/60 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
             </button>
             <div>
-              <h1 className="font-display text-2xl font-bold text-parchment">Dashboard</h1>
-              <p className="text-parchment/30 text-xs font-body">
-                {participants.length} participants · All time
+              <h1 className="font-display text-2xl font-bold text-primary">Dashboard</h1>
+              <p className="text-muted text-xs font-body">
+                {participants.length} participants Â· All time
               </p>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function DashboardPage() {
             <button
               onClick={() => handleExport("excel")}
               disabled={isExporting !== null || participants.length === 0}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-sage/30 text-sage hover:bg-sage/10 transition-all text-xs font-body font-medium disabled:opacity-40 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-sage/30 text-sage-c hover:bg-sage/10 transition-all text-xs font-body font-medium disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {isExporting === "excel" ? (
                 <span className="w-3.5 h-3.5 border border-sage/40 border-t-sage rounded-full animate-spin" />
@@ -209,14 +209,14 @@ export default function DashboardPage() {
             { label: "Top Score", value: `${topScore}/15`, sub: "highest ever" },
             {
               label: "Pass Rate",
-              value: participants.length > 0 ? `${Math.round((passCount / participants.length) * 100)}%` : "—",
-              sub: "score ≥50%",
+              value: participants.length > 0 ? `${Math.round((passCount / participants.length) * 100)}%` : "â€”",
+              sub: "score â‰¥50%",
             },
           ].map((s) => (
-            <div key={s.label} className="bg-slate/30 border border-gold/10 rounded-xl p-4">
+            <div key={s.label} className="bg-surface-2 border border-subtle rounded-xl p-4">
               <div className="font-display text-2xl font-bold text-gold">{s.value}</div>
-              <div className="text-parchment/60 text-xs font-body mt-1">{s.label}</div>
-              <div className="text-parchment/25 text-xs font-mono mt-0.5">{s.sub}</div>
+              <div className="text-primary/60 text-xs font-body mt-1">{s.label}</div>
+              <div className="text-muted text-xs font-mono mt-0.5">{s.sub}</div>
             </div>
           ))}
         </div>
@@ -228,7 +228,7 @@ export default function DashboardPage() {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2 rounded-lg text-sm font-body font-medium capitalize transition-all ${
-                activeTab === tab ? "bg-gold text-ink" : "text-parchment/40 hover:text-parchment/60"
+                activeTab === tab ? "bg-gold text-ink" : "text-muted hover:text-primary/60"
               }`}
             >
               {tab}
@@ -238,8 +238,8 @@ export default function DashboardPage() {
 
         {/* Empty state */}
         {participants.length === 0 ? (
-          <div className="text-center py-20 text-parchment/20">
-            <div className="font-display text-6xl mb-4">📋</div>
+          <div className="text-center py-20 text-faint">
+            <div className="font-display text-6xl mb-4">ðŸ“‹</div>
             <p className="font-body text-lg">No participants yet</p>
             <p className="font-body text-sm mt-1">Complete a quiz to see results here</p>
             <button
@@ -251,13 +251,13 @@ export default function DashboardPage() {
           </div>
         ) : activeTab === "leaderboard" ? (
 
-          /* ── Leaderboard ── */
-          <div className="bg-slate/20 border border-gold/10 rounded-2xl overflow-hidden overflow-x-auto">
+          /* â”€â”€ Leaderboard â”€â”€ */
+          <div className="bg-surface-2 border border-subtle rounded-2xl overflow-hidden overflow-x-auto">
             <table className="w-full min-w-[900px]">
 
               {/* Table header */}
               <thead>
-                <tr className="border-b border-parchment/8 text-parchment/30 text-xs font-mono uppercase tracking-wider">
+                <tr className="border-b border-subtle text-muted text-xs font-mono uppercase tracking-wider">
                   <th className="px-4 py-3 text-left w-12">Rank</th>
                   <th className="px-4 py-3 text-left">Name</th>
                   <th className="px-4 py-3 text-left">Phone</th>
@@ -279,14 +279,14 @@ export default function DashboardPage() {
                   const medal = rankMedal(i);
                   const grade =
                     pct >= 90 ? "text-gold"
-                    : pct >= 70 ? "text-sage"
-                    : pct >= 50 ? "text-parchment/60"
+                    : pct >= 70 ? "text-sage-c"
+                    : pct >= 50 ? "text-primary/60"
                     : "text-crimson/70";
 
                   return (
                     <tr
                       key={p.id}
-                      className={`border-b border-parchment/5 last:border-b-0 hover:bg-parchment/3 transition-colors ${
+                      className={`border-b border-subtle last:border-b-0 hover:bg-parchment/3 transition-colors ${
                         i === 0 ? "bg-gold/5" : ""
                       }`}
                     >
@@ -295,46 +295,46 @@ export default function DashboardPage() {
                         {medal ? (
                           <span className="text-lg">{medal}</span>
                         ) : (
-                          <span className="font-mono text-parchment/30 text-sm">#{i + 1}</span>
+                          <span className="font-mono text-muted text-sm">#{i + 1}</span>
                         )}
                       </td>
 
                       {/* Name */}
                       <td className="px-4 py-4">
-                        <div className="font-body text-parchment text-sm font-medium whitespace-nowrap">{p.name}</div>
-                        <div className="font-mono text-parchment/25 text-xs">{p.id.slice(0, 8)}</div>
+                        <div className="font-body text-primary text-sm font-medium whitespace-nowrap">{p.name}</div>
+                        <div className="font-mono text-muted text-xs">{p.id.slice(0, 8)}</div>
                       </td>
 
                       {/* Phone */}
                       <td className="px-4 py-4">
-                        <span className="font-mono text-parchment/35 text-xs whitespace-nowrap">{p.phone}</span>
+                        <span className="font-mono text-primary/35 text-xs whitespace-nowrap">{p.phone}</span>
                       </td>
 
                       {/* State */}
                       <td className="px-4 py-4">
-                        <span className="text-parchment/60 text-xs font-body">{p.state || "—"}</span>
+                        <span className="text-primary/60 text-xs font-body">{p.state || "â€”"}</span>
                       </td>
 
                       {/* District */}
                       <td className="px-4 py-4">
-                        <span className="text-parchment/60 text-xs font-body">{p.district || "—"}</span>
+                        <span className="text-primary/60 text-xs font-body">{p.district || "â€”"}</span>
                       </td>
 
                       {/* Block */}
                       <td className="px-4 py-4">
-                        <span className="text-parchment/40 text-xs font-body">{p.block || "—"}</span>
+                        <span className="text-muted text-xs font-body">{p.block || "â€”"}</span>
                       </td>
 
                       {/* GP */}
                       <td className="px-4 py-4">
-                        <span className="text-parchment/40 text-xs font-body">{p.gp || "—"}</span>
+                        <span className="text-muted text-xs font-body">{p.gp || "â€”"}</span>
                       </td>
 
                       {/* Score */}
                       <td className="px-4 py-4 text-center">
                         <div className="flex items-center justify-center gap-1">
                           <span className={`font-display text-lg font-bold ${grade}`}>{p.score}</span>
-                          <span className="text-parchment/25 text-xs font-mono">/{p.totalQuestions}</span>
+                          <span className="text-muted text-xs font-mono">/{p.totalQuestions}</span>
                         </div>
                       </td>
 
@@ -345,7 +345,7 @@ export default function DashboardPage() {
 
                       {/* Time */}
                       <td className="px-4 py-4 text-center">
-                        <span className="font-mono text-parchment/40 text-xs whitespace-nowrap">
+                        <span className="font-mono text-muted text-xs whitespace-nowrap">
                           {Math.floor(p.timeTaken / 60) > 0 ? `${Math.floor(p.timeTaken / 60)}m ` : ""}
                           {p.timeTaken % 60}s
                         </span>
@@ -353,7 +353,7 @@ export default function DashboardPage() {
 
                       {/* Date */}
                       <td className="px-4 py-4 text-center">
-                        <span className="font-mono text-parchment/25 text-xs whitespace-nowrap">
+                        <span className="font-mono text-muted text-xs whitespace-nowrap">
                           {new Date(p.completedAt).toLocaleDateString("en-GB", { day: "2-digit", month: "short" })}
                         </span>
                       </td>
@@ -366,13 +366,13 @@ export default function DashboardPage() {
 
         ) : (
 
-          /* ── Analytics ── */
+          /* â”€â”€ Analytics â”€â”€ */
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
               {/* Score distribution */}
-              <div className="bg-slate/20 border border-gold/10 rounded-2xl p-6">
-                <h3 className="font-display text-parchment text-lg mb-5">Score Distribution</h3>
+              <div className="bg-surface-2 border border-subtle rounded-2xl p-6">
+                <h3 className="font-display text-primary text-lg mb-5">Score Distribution</h3>
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={scoreDistribution}>
                     <XAxis
@@ -394,8 +394,8 @@ export default function DashboardPage() {
               </div>
 
               {/* Grade breakdown pie */}
-              <div className="bg-slate/20 border border-gold/10 rounded-2xl p-6">
-                <h3 className="font-display text-parchment text-lg mb-5">Grade Breakdown</h3>
+              <div className="bg-surface-2 border border-subtle rounded-2xl p-6">
+                <h3 className="font-display text-primary text-lg mb-5">Grade Breakdown</h3>
                 {gradeData.length > 0 ? (
                   <div className="flex items-center gap-4">
                     <ResponsiveContainer width={160} height={160}>
@@ -419,14 +419,14 @@ export default function DashboardPage() {
                       {gradeData.map((d) => (
                         <div key={d.name} className="flex items-center gap-2">
                           <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: d.color }} />
-                          <span className="text-parchment/50 text-xs font-body flex-1 truncate">{d.name}</span>
-                          <span className="font-mono text-parchment/60 text-xs">{d.value}</span>
+                          <span className="text-secondary text-xs font-body flex-1 truncate">{d.name}</span>
+                          <span className="font-mono text-primary/60 text-xs">{d.value}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-40 text-parchment/20 text-sm font-body">
+                  <div className="flex items-center justify-center h-40 text-faint text-sm font-body">
                     No data
                   </div>
                 )}
@@ -435,8 +435,8 @@ export default function DashboardPage() {
 
             {/* Score timeline */}
             {timelineData.length > 1 && (
-              <div className="bg-slate/20 border border-gold/10 rounded-2xl p-6">
-                <h3 className="font-display text-parchment text-lg mb-5">Score Timeline</h3>
+              <div className="bg-surface-2 border border-subtle rounded-2xl p-6">
+                <h3 className="font-display text-primary text-lg mb-5">Score Timeline</h3>
                 <ResponsiveContainer width="100%" height={200}>
                   <LineChart data={timelineData}>
                     <XAxis
@@ -473,7 +473,7 @@ export default function DashboardPage() {
           <div className="mt-6 flex justify-end">
             {showClearConfirm ? (
               <div className="flex items-center gap-3">
-                <span className="text-parchment/40 text-xs font-body">Clear all data from database?</span>
+                <span className="text-muted text-xs font-body">Clear all data from database?</span>
                 <button
                   onClick={handleClear}
                   className="px-4 py-1.5 rounded-lg bg-crimson/80 text-white text-xs font-body hover:bg-crimson transition-colors"
@@ -482,7 +482,7 @@ export default function DashboardPage() {
                 </button>
                 <button
                   onClick={() => setShowClearConfirm(false)}
-                  className="px-4 py-1.5 rounded-lg border border-parchment/10 text-parchment/40 text-xs font-body hover:text-parchment/60 transition-colors"
+                  className="px-4 py-1.5 rounded-lg border border-subtle text-muted text-xs font-body hover:text-primary/60 transition-colors"
                 >
                   Cancel
                 </button>
@@ -490,7 +490,7 @@ export default function DashboardPage() {
             ) : (
               <button
                 onClick={() => setShowClearConfirm(true)}
-                className="text-parchment/20 hover:text-crimson/60 text-xs font-body transition-colors"
+                className="text-faint hover:text-crimson/60 text-xs font-body transition-colors"
               >
                 Clear all data
               </button>
@@ -501,3 +501,4 @@ export default function DashboardPage() {
     </main>
   );
 }
+
