@@ -1,4 +1,4 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -74,7 +74,9 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
   background-color: var(--bg);
   color: var(--text-primary);
   overflow-x: hidden;
@@ -82,11 +84,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3 { font-family: Arial, sans-serif; }
-.font-display { font-family: Arial, sans-serif; }
-.font-body    { font-family: Arial, sans-serif; }
-.font-mono    { font-family: Arial, sans-serif; }
-
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+.font-display { font-family: 'Playfair Display', serif; }
+.font-body    { font-family: 'DM Sans', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+.input-base   { font-family: 'DM Sans', sans-serif; }
 /* ── Grain overlay ── */
 body::before {
   content: '';
@@ -160,7 +162,7 @@ body::before {
   border-radius: 0.75rem;
   padding: 0.875rem 1.25rem;
   color: var(--text-primary);
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
   outline: none;
   transition: all 0.2s;

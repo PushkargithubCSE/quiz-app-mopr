@@ -51,7 +51,7 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <div className="font-display text-primary text-lg font-bold">Take Quiz</div>
-                  <div className="text-muted text-xs font-body mt-0.5">क्विज़ दें · 15 questions · 1 attempt only</div>
+                  <div className="text-muted text-xs font-body mt-0.5">क्विज़ दें · 25 questions · 1 attempt only</div>
                 </div>
                 <svg className="w-5 h-5 text-gold opacity-60 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
