@@ -21,17 +21,16 @@ export default function Home() {
           <img src="/badge-logo.png" alt="Knowledge Challenge" className="h-48 w-auto object-contain" />
         </div>
 
-        {/* Card */}
+          {/* Card */}
         <div className="card glass-card p-10">
           {/* Logo */}
-          <img src="/quiz-master-logo.png" alt="QuizMaster" className="h-20 w-auto object-contain mx-auto mb-4" />
 
           {/* Title */}
           <h2 className="font-display text-center text-primary text-lg font-semibold leading-snug mt-3 mb-2">
-             People’s Plan Campaign Quiz
+             People’s Plan Campaign 
             <span className="block text-secondary text-sm font-body font-normal mt-1">
-           पीपल्स प्लान अभियान क्विज़            
-           </span>
+             सबकी योजना, सबका विकास           
+             </span>
           </h2>
 
           <div className="deco-line w-32 mx-auto mt-4 mb-8" />

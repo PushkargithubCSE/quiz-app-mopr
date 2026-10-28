@@ -223,7 +223,7 @@ export default function RegisterPage() {
             onClick={handleStart}
             disabled={isStarting}
             className="w-full relative overflow-hidden rounded-xl py-4 font-body font-semibold text-ink text-sm tracking-wide transition-all duration-300 group"
-            style={{ background: "linear-gradient(135deg, #D4A853, #F0C87A, #D4A853)", backgroundSize: "200%" }}
+            style={{ background: "linear-gradient(135deg, #f31212, #F0C87A, #D4A853)", backgroundSize: "200%" }}
           >
             <span className={`relative z-10 flex items-center justify-center gap-2 transition-all ${isStarting ? "opacity-0" : "opacity-100"}`}>
               Begin the Challenge

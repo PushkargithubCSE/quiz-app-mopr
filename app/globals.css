@@ -37,17 +37,17 @@
 
 /* ── Light Theme ── */
 [data-theme="light"] {
-  --bg: #F0EBE0;
-  --surface: #E8E2D6;
-  --surface-2: rgba(232,226,214,0.8);
-  --border: rgba(139,90,10,0.2);
+  --bg: #ffffff;
+  --surface: #f7f7f7;
+  --surface-2: #f7f7f7;
+  --border: rgba(139, 10, 10, 0.2);
   --border-subtle: rgba(26,26,46,0.1);
   --text-primary: #1A1A2E;
   --text-secondary: rgba(26,26,46,0.65);
   --text-muted: rgba(26,26,46,0.4);
   --text-faint: rgba(26,26,46,0.2);
-  --gold: #8B5A0A;
-  --gold-light: #A06B10;
+  --gold: #ff0b0b;
+  --gold-light: #fa0606;
   --gold-subtle: rgba(139,90,10,0.08);
   --gold-border: rgba(139,90,10,0.25);
   --crimson: #B03020;
@@ -58,8 +58,8 @@
   --sage-border: rgba(30,107,58,0.25);
   --input-bg: rgba(255,252,245,0.9);
   --input-bg-focus: rgba(255,255,255,1);
-  --shimmer-1: #8B5A0A;
-  --shimmer-2: #C47F1A;
+  --shimmer-1: #8b0a0a;
+  --shimmer-2: #ff1a1a;
   --grid-color: #8B5A0A;
   --scrollbar-thumb: #8B5A0A;
   --scrollbar-track: #F0EBE0;
