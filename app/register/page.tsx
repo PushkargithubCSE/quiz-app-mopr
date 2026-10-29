@@ -123,7 +123,7 @@ export default function RegisterPage() {
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-3 mb-8">
             {[
-              { num: "25", label: "Questions" },
+              { num: "20", label: "Questions" },
               { num: "4", label: "Options Each" },
               { num: "1", label: "Attempt Only" },
             ].map((s) => (

@@ -18,12 +18,16 @@ export default function Home() {
       <div className="w-full max-w-lg relative z-10">
         {/* Badge image */}
         <div className="flex justify-center mb-8">
-          <img src="/badge-logo.png" alt="Knowledge Challenge" className="h-48 w-auto object-contain" />
+          <img src="/image.png" alt="Knowledge Challenge" className="h-48 w-auto object-contain" />
         </div>
 
           {/* Card */}
         <div className="card glass-card p-10">
           {/* Logo */}
+
+          <div className="flex justify-center mb-6">
+            <img src="/logo.png" alt="Knowledge Challenge Logo" className="h-36 w-auto object-contain" />
+          </div>
 
           {/* Title */}
           <h2 className="font-display text-center text-primary text-lg font-semibold leading-snug mt-3 mb-2">
@@ -51,7 +55,7 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <div className="font-display text-primary text-lg font-bold">Start Quiz</div>
-                  <div className="text-muted text-xs font-body mt-0.5">25 questions · 1 attempt only</div>
+                  <div className="text-muted text-xs font-body mt-0.5">20 questions · 1 attempt only</div>
                 </div>
                 <svg className="w-5 h-5 text-gold opacity-60 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
