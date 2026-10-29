@@ -60,17 +60,17 @@ export default function DashboardPage() {
   const passCount = participants.filter((p) => p.score / p.totalQuestions >= 0.5).length;
 
   const scoreDistribution = [
-    { range: "0â€“2", count: participants.filter((p) => p.score <= 2).length },
-    { range: "3â€“4", count: participants.filter((p) => p.score >= 3 && p.score <= 4).length },
-    { range: "5â€“6", count: participants.filter((p) => p.score >= 5 && p.score <= 6).length },
-    { range: "7â€“8", count: participants.filter((p) => p.score >= 7 && p.score <= 8).length },
-    { range: "9â€“10", count: participants.filter((p) => p.score >= 9).length },
+    { range: "0-2", count: participants.filter((p) => p.score <= 2).length },
+    { range: "3-4", count: participants.filter((p) => p.score >= 3 && p.score <= 4).length },
+    { range: "5-6", count: participants.filter((p) => p.score >= 5 && p.score <= 6).length },
+    { range: "7-8", count: participants.filter((p) => p.score >= 7 && p.score <= 8).length },
+    { range: "9-10", count: participants.filter((p) => p.score >= 9).length },
   ];
 
   const gradeData = [
     { name: "Excellent (90%+)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.9).length, color: "#D4A853" },
-    { name: "Great (70â€“89%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.7 && p.score / p.totalQuestions < 0.9).length, color: "#4A7C59" },
-    { name: "Pass (50â€“69%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.5 && p.score / p.totalQuestions < 0.7).length, color: "#7A8B6F" },
+    { name: "Great (70–89%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.7 && p.score / p.totalQuestions < 0.9).length, color: "#4A7C59" },
+    { name: "Pass (50–69%)", value: participants.filter((p) => p.score / p.totalQuestions >= 0.5 && p.score / p.totalQuestions < 0.7).length, color: "#7A8B6F" },
     { name: "Fail (<50%)", value: participants.filter((p) => p.score / p.totalQuestions < 0.5).length, color: "#C23B22" },
   ].filter((d) => d.value > 0);
 
@@ -344,7 +344,6 @@ sub: "score ≥50%",
                       {/* Name */}
                       <td className="px-4 py-4">
                         <div className="font-body text-primary text-sm font-medium whitespace-nowrap">{p.name}</div>
-                        <div className="font-mono text-muted text-xs">{p.id.slice(0, 8)}</div>
                       </td>
 
                       {/* Phone */}
