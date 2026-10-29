@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "PPC 2026 Quiz",
-  description: "An elegant quiz on Panchayati Raj and Women Leadership",
+  description: "National Workshop on People's Plan Campaign (PPC) 2026–27",
 };
 
 export default function RootLayout({
