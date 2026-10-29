@@ -50,33 +50,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <div className="font-display text-primary text-lg font-bold">Take Quiz</div>
-                  <div className="text-muted text-xs font-body mt-0.5">क्विज़ दें · 25 questions · 1 attempt only</div>
+                  <div className="font-display text-primary text-lg font-bold">Start Quiz</div>
+                  <div className="text-muted text-xs font-body mt-0.5">25 questions · 1 attempt only</div>
                 </div>
                 <svg className="w-5 h-5 text-gold opacity-60 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </button>
-
-            {/* Submit Feedback */}
-            <button
-              onClick={() => router.push("/feedback")}
-              className="w-full group rounded-xl py-5 px-6 transition-all duration-300 text-left"
-              style={{ background: "var(--surface-2)", border: "1px solid var(--border-subtle)" }}
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
-                  style={{ background: "var(--surface)", border: "1px solid var(--border-subtle)" }}>
-                  <svg className="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <div className="font-display text-primary text-lg font-bold group-hover:text-gold transition-colors">Submit Feedback</div>
-                  <div className="text-muted text-xs font-body mt-0.5">प्रतिक्रिया दें · Share your thoughts</div>
-                </div>
-                <svg className="w-5 h-5 text-muted group-hover:text-gold group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </div>
