@@ -37,7 +37,13 @@ export default function RegisterPage() {
     }
 
     setIsStarting(true);
-
+    const statusRes = await fetch("/api/quiz-status", { cache: "no-store" });
+    const statusData = await statusRes.json();
+    if (!statusData.active && cleanPhone !== "9871291315") {
+      setError("The quiz has been stopped by the admin. Please try again later.");
+      setIsStarting(false);
+      return;
+    }
     const res = await fetch(`/api/check-phone?phone=${encodeURIComponent(cleanPhone)}`);
     const data = await res.json();
 

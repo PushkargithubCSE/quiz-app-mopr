@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/lib/theme-context";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata: Metadata = {
-  title: "QuizMaster — Panchayati Raj & Women Leadership",
+  title: "PPC 2026 Quiz",
   description: "An elegant quiz on Panchayati Raj and Women Leadership",
 };
 

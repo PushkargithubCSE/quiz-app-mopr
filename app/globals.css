@@ -46,11 +46,11 @@
   --text-secondary: rgba(26,26,46,0.65);
   --text-muted: rgba(26,26,46,0.4);
   --text-faint: rgba(26,26,46,0.2);
-  --gold: #ff0b0b;
-  --gold-light: #fa0606;
+  --gold: #1cb31c;
+  --gold-light: #31bc31;
   --gold-subtle: rgba(139,90,10,0.08);
   --gold-border: rgba(139,90,10,0.25);
-  --crimson: #B03020;
+  --crimson: #20b027;
   --crimson-subtle: rgba(176,48,32,0.1);
   --crimson-border: rgba(176,48,32,0.25);
   --sage: #1E6B3A;
@@ -58,8 +58,8 @@
   --sage-border: rgba(30,107,58,0.25);
   --input-bg: rgba(255,252,245,0.9);
   --input-bg-focus: rgba(255,255,255,1);
-  --shimmer-1: #8b0a0a;
-  --shimmer-2: #ff1a1a;
+  --shimmer-1: #17581f;
+  --shimmer-2: #caff1a;
   --grid-color: #8B5A0A;
   --scrollbar-thumb: #8B5A0A;
   --scrollbar-track: #F0EBE0;

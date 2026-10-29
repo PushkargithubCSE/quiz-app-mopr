@@ -11,6 +11,8 @@ import {
 export default function DashboardPage() {
   const router = useRouter();
   const [participants, setParticipants] = useState<Participant[]>([]);
+  const [quizActive, setQuizActive] = useState(true);
+  const [isToggling, setIsToggling] = useState(false);
   const [activeTab, setActiveTab] = useState<"leaderboard" | "analytics">("leaderboard");
   const [isExporting, setIsExporting] = useState<"excel" | "pdf" | null>(null);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
@@ -28,6 +30,11 @@ export default function DashboardPage() {
       router.push("/");
       return;
     }
+
+    fetch("/api/quiz-status", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => setQuizActive(d.active))
+      .catch(console.error);
 
     fetch("/api/participants")
       .then((r) => {
@@ -95,10 +102,25 @@ export default function DashboardPage() {
     }
   };
 
+  const toggleQuiz = async () => {
+    setIsToggling(true);
+    try {
+      const res = await fetch("/api/quiz-status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: "9871291315", active: !quizActive }),
+      });
+      const data = await res.json();
+      if (res.ok) setQuizActive(data.active);
+    } finally {
+      setIsToggling(false);
+    }
+  };
+
   const rankMedal = (i: number) => {
-    if (i === 0) return "ðŸ¥‡";
-    if (i === 1) return "ðŸ¥ˆ";
-    if (i === 2) return "ðŸ¥‰";
+    if (i === 0) return "🥇";
+    if (i === 1) return "🥈";
+    if (i === 2) return "🥉";
     return null;
   };
 
@@ -129,7 +151,7 @@ export default function DashboardPage() {
     return (
       <main className="min-h-screen bg-theme flex items-center justify-center p-6">
         <div className="text-center">
-          <div className="font-display text-5xl mb-4">âš ï¸</div>
+          <div className="font-display text-5xl mb-4">⚠️</div>
           <p className="text-primary/60 font-body mb-6">{error}</p>
           <button
             onClick={() => window.location.reload()}
@@ -163,9 +185,24 @@ export default function DashboardPage() {
             <div>
               <h1 className="font-display text-2xl font-bold text-primary">Dashboard</h1>
               <p className="text-muted text-xs font-body">
-                {participants.length} participants Â· All time
+                {participants.length} participants · All time
               </p>
             </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleQuiz}
+              disabled={isToggling}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-body font-semibold transition-all disabled:opacity-50"
+              style={{
+                background: quizActive ? "var(--crimson-subtle)" : "var(--sage-subtle)",
+                border: `1px solid ${quizActive ? "var(--crimson-border)" : "var(--sage-border)"}`,
+                color: quizActive ? "var(--crimson)" : "var(--sage)",
+              }}
+            >
+              {quizActive ? "Stop Quiz" : "Resume Quiz"}
+            </button>
           </div>
 
           {/* Export buttons */}
@@ -205,12 +242,16 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
           {[
             { label: "Total Participants", value: participants.length.toString(), sub: "all time" },
-            { label: "Average Score", value: `${avgScore}/15`, sub: "mean score" },
-            { label: "Top Score", value: `${topScore}/15`, sub: "highest ever" },
+            { label: "Average Score", value: `${avgScore}/20`, sub: "mean score" },
+            { label: "Top Score", value: `${topScore}/20`, sub: "highest ever" },
             {
               label: "Pass Rate",
-              value: participants.length > 0 ? `${Math.round((passCount / participants.length) * 100)}%` : "â€”",
-              sub: "score â‰¥50%",
+              
+value: participants.length > 0
+  ? `${Math.round((passCount / participants.length) * 100)}%`
+  : "—",
+sub: "score ≥50%",
+
             },
           ].map((s) => (
             <div key={s.label} className="bg-surface-2 border border-subtle rounded-xl p-4">
@@ -239,7 +280,8 @@ export default function DashboardPage() {
         {/* Empty state */}
         {participants.length === 0 ? (
           <div className="text-center py-20 text-faint">
-            <div className="font-display text-6xl mb-4">ðŸ“‹</div>
+
+            <div className="font-display text-6xl mb-4">📋</div>
             <p className="font-body text-lg">No participants yet</p>
             <p className="font-body text-sm mt-1">Complete a quiz to see results here</p>
             <button
@@ -312,22 +354,22 @@ export default function DashboardPage() {
 
                       {/* State */}
                       <td className="px-4 py-4">
-                        <span className="text-primary/60 text-xs font-body">{p.state || "â€”"}</span>
+                        <span className="text-primary/60 text-xs font-body">{p.state || "-"}</span>
                       </td>
 
                       {/* District */}
                       <td className="px-4 py-4">
-                        <span className="text-primary/60 text-xs font-body">{p.district || "â€”"}</span>
+                        <span className="text-primary/60 text-xs font-body">{p.district || "-"}</span>
                       </td>
 
                       {/* Block */}
                       <td className="px-4 py-4">
-                        <span className="text-muted text-xs font-body">{p.block || "â€”"}</span>
+                        <span className="text-muted text-xs font-body">{p.block || "-"}</span>
                       </td>
 
                       {/* GP */}
                       <td className="px-4 py-4">
-                        <span className="text-muted text-xs font-body">{p.gp || "â€”"}</span>
+                        <span className="text-muted text-xs font-body">{p.gp || "-"}</span>
                       </td>
 
                       {/* Score */}
@@ -501,4 +543,3 @@ export default function DashboardPage() {
     </main>
   );
 }
-

@@ -1,6 +1,8 @@
 import { sql, initDB } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   await initDB();
   const rows = await sql`
@@ -35,8 +37,8 @@ export async function POST(req: NextRequest) {
         ${body.phone},
         ${body.state},
         ${body.district},
-        ${body.block || ''},
-        ${body.gp || ''},
+        ${body.block || ""},
+        ${body.gp || ""},
         ${body.score},
         ${body.totalQuestions},
         ${JSON.stringify(body.answers)},
@@ -49,6 +51,7 @@ export async function POST(req: NextRequest) {
     if (err.message?.includes("unique") || err.code === "23505") {
       return NextResponse.json({ error: "already_attempted" }, { status: 409 });
     }
+    console.error("participants POST error:", err);
     return NextResponse.json({ error: "server_error" }, { status: 500 });
   }
 }

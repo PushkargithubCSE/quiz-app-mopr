@@ -24,20 +24,24 @@ export async function initDB() {
     console.error("initDB CREATE TABLE error:", err);
   }
 
-  // Run each ALTER separately with its own try-catch
-  // so one failure doesn't block the rest
   const alters = [
     sql`ALTER TABLE participants ADD COLUMN IF NOT EXISTS state TEXT NOT NULL DEFAULT ''`,
     sql`ALTER TABLE participants ADD COLUMN IF NOT EXISTS district TEXT NOT NULL DEFAULT ''`,
     sql`ALTER TABLE participants ADD COLUMN IF NOT EXISTS block TEXT DEFAULT ''`,
     sql`ALTER TABLE participants ADD COLUMN IF NOT EXISTS gp TEXT DEFAULT ''`,
   ];
-
   for (const alter of alters) {
     try {
       await alter;
     } catch {
-      // Column likely already exists — safe to ignore
+      // column already exists
     }
+  }
+
+  try {
+    await sql`CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL)`;
+    await sql`INSERT INTO settings (key, value) VALUES ('quiz_active', 'true') ON CONFLICT (key) DO NOTHING`;
+  } catch (err) {
+    console.error("settings init error:", err);
   }
 }
